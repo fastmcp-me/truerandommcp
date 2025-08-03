@@ -65,3 +65,6 @@ jspm_packages/
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Publishing scripts
+publish.js

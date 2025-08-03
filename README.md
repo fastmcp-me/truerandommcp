@@ -15,18 +15,35 @@ This MCP server provides the following tools:
 - **generateBlobs** - Generate random binary data in base64 or hex format
 - **getUsage** - Get API usage statistics
 
-## Installation
+## Installation & Deployment
 
-### Option 1: Install from npm (Recommended)
+### 🚀 Quick Start with npm (Recommended)
+
+#### Method 1: Global Installation
 ```bash
-# Global installation
+# Install globally
 npm install -g random-org-mcp-server
 
-# Or use without installation
+# Verify installation
+random-org-mcp --version
+```
+
+#### Method 2: Use without Installation
+```bash
+# Run directly with npx (no installation required)
 npx random-org-mcp-server
 ```
 
-### Option 2: Build from source
+#### Method 3: Local Project Installation
+```bash
+# Install in your project
+npm install random-org-mcp-server
+
+# Run from node_modules
+npx random-org-mcp-server
+```
+
+### 🛠️ Build from Source
 1. Clone this repository:
 ```bash
 git clone https://github.com/QianJue-CN/TRUERandomMCP.git
@@ -45,16 +62,43 @@ npm run build
 
 ## Configuration
 
-1. Get an API key from [api.random.org](https://api.random.org/api-keys/beta)
+### 🔑 Get API Key
+1. Visit [api.random.org](https://api.random.org/api-keys/beta) to get a free API key
+2. Register and obtain your API key
 
-2. Copy the environment file and configure it:
+### ⚙️ Configuration Methods
+
+#### Method 1: Environment Variables (Recommended)
+Create a `.env` file in your working directory:
 ```bash
+# Copy example file (if building from source)
 cp .env.example .env
 ```
 
-3. Edit `.env` and add your API key:
+Edit `.env` file:
 ```env
 RANDOM_ORG_API_KEY=your_api_key_here
+RATE_LIMIT_REQUESTS_PER_SECOND=1
+RATE_LIMIT_BURST_SIZE=5
+REQUEST_TIMEOUT_MS=10000
+MAX_RETRIES=3
+RETRY_DELAY_MS=1000
+```
+
+#### Method 2: MCP Client Configuration
+Configure directly in your MCP client (e.g., Claude Desktop):
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "npx",
+      "args": ["random-org-mcp-server"],
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
 ```
 
 ### Environment Variables
@@ -68,7 +112,65 @@ RANDOM_ORG_API_KEY=your_api_key_here
 
 ## Usage
 
-### Running the Server
+## 🔗 MCP Client Integration
+
+### Claude Desktop Configuration
+1. Locate your Claude Desktop configuration file:
+   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+2. Add the Random.org MCP server configuration:
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "npx",
+      "args": ["random-org-mcp-server"],
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+3. Restart Claude Desktop
+
+### Alternative Configurations
+
+#### Using Global Installation
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "random-org-mcp",
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+#### Using Local Installation
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "node",
+      "args": ["node_modules/random-org-mcp-server/dist/index.js"],
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+## Running the Server
+
+### 🚀 Production Usage
 
 #### If installed globally:
 ```bash
@@ -84,6 +186,8 @@ npx random-org-mcp-server
 ```bash
 npm start
 ```
+
+### 🛠️ Development
 
 For development with auto-reload:
 ```bash

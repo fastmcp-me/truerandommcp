@@ -15,18 +15,35 @@
 - **generateBlobs** - 生成base64或hex格式的随机二进制数据
 - **getUsage** - 获取API使用统计信息
 
-## 安装
+## 安装与部署
 
-### 方式1：从npm安装（推荐）
+### 🚀 npm快速开始（推荐）
+
+#### 方式1：全局安装
 ```bash
 # 全局安装
 npm install -g random-org-mcp-server
 
-# 或直接使用（无需安装）
+# 验证安装
+random-org-mcp --version
+```
+
+#### 方式2：无需安装直接使用
+```bash
+# 使用npx直接运行（无需安装）
 npx random-org-mcp-server
 ```
 
-### 方式2：从源码构建
+#### 方式3：项目本地安装
+```bash
+# 在项目中安装
+npm install random-org-mcp-server
+
+# 从node_modules运行
+npx random-org-mcp-server
+```
+
+### 🛠️ 从源码构建
 1. 克隆此仓库：
 ```bash
 git clone https://github.com/QianJue-CN/TRUERandomMCP.git
@@ -45,16 +62,43 @@ npm run build
 
 ## 配置
 
-1. 从 [api.random.org](https://api.random.org/api-keys/beta) 获取API密钥
+### 🔑 获取API密钥
+1. 访问 [api.random.org](https://api.random.org/api-keys/beta) 获取免费API密钥
+2. 注册并获取您的API密钥
 
-2. 复制环境变量文件并配置：
+### ⚙️ 配置方法
+
+#### 方法1：环境变量（推荐）
+在工作目录创建 `.env` 文件：
 ```bash
+# 复制示例文件（如果从源码构建）
 cp .env.example .env
 ```
 
-3. 编辑 `.env` 文件并添加您的API密钥：
+编辑 `.env` 文件：
 ```env
 RANDOM_ORG_API_KEY=your_api_key_here
+RATE_LIMIT_REQUESTS_PER_SECOND=1
+RATE_LIMIT_BURST_SIZE=5
+REQUEST_TIMEOUT_MS=10000
+MAX_RETRIES=3
+RETRY_DELAY_MS=1000
+```
+
+#### 方法2：MCP客户端配置
+直接在MCP客户端（如Claude Desktop）中配置：
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "npx",
+      "args": ["random-org-mcp-server"],
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
 ```
 
 ### 环境变量
@@ -68,7 +112,65 @@ RANDOM_ORG_API_KEY=your_api_key_here
 
 ## 使用方法
 
-### 运行服务器
+## 🔗 MCP客户端集成
+
+### Claude Desktop配置
+1. 找到Claude Desktop配置文件：
+   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+2. 添加Random.org MCP服务器配置：
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "npx",
+      "args": ["random-org-mcp-server"],
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+3. 重启Claude Desktop
+
+### 其他配置方式
+
+#### 使用全局安装
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "random-org-mcp",
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+#### 使用本地安装
+```json
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "node",
+      "args": ["node_modules/random-org-mcp-server/dist/index.js"],
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+## 运行服务器
+
+### 🚀 生产环境使用
 
 #### 如果已全局安装：
 ```bash
@@ -84,6 +186,8 @@ npx random-org-mcp-server
 ```bash
 npm start
 ```
+
+### 🛠️ 开发环境
 
 开发模式（自动重载）：
 ```bash

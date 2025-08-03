@@ -75,5 +75,7 @@ tests/
 # Documentation that's not needed in package
 examples.md
 快速开始.md
-mcp-config.json
-mcp-config-zh.json
+部署指南.md
+
+# Publishing scripts
+publish.js
