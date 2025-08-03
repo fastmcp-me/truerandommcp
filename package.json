@@ -1,14 +1,26 @@
 {
-  "name": "truerandommcp",
+  "name": "random-org-mcp-server",
   "version": "1.0.0",
   "description": "MCP Server for api.random.org integration - Generate true random numbers, strings, UUIDs and more",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "bin": {
+    "random-org-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "README-zh.md",
+    "LICENSE",
+    ".env.example"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --exec ts-node --esm src/index.ts",
     "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -22,6 +34,14 @@
   ],
   "author": "",
   "license": "MIT",
+  "homepage": "https://github.com/your-username/random-org-mcp-server#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/random-org-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/random-org-mcp-server/issues"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
