@@ -1,4 +1,4 @@
-# Random.org MCP 服务器
+# 随机数MCP服务器
 
 一个Model Context Protocol (MCP) 服务器，提供对api.random.org服务的访问，用于生成真随机数、字符串、UUID等。
 
@@ -17,9 +17,19 @@
 
 ## 安装
 
+### 方式1：从npm安装（推荐）
+```bash
+# 全局安装
+npm install -g random-org-mcp-server
+
+# 或直接使用（无需安装）
+npx random-org-mcp-server
+```
+
+### 方式2：从源码构建
 1. 克隆此仓库：
 ```bash
-git clone <repository-url>
+git clone https://github.com/QianJue-CN/TRUERandomMCP.git
 cd TRUERandomMCP
 ```
 
@@ -60,6 +70,17 @@ RANDOM_ORG_API_KEY=your_api_key_here
 
 ### 运行服务器
 
+#### 如果已全局安装：
+```bash
+random-org-mcp
+```
+
+#### 使用npx（无需安装）：
+```bash
+npx random-org-mcp-server
+```
+
+#### 从源码运行：
 ```bash
 npm start
 ```
@@ -185,5 +206,5 @@ MIT许可证 - 详见LICENSE文件。
 
 ## 支持
 
-对于与此MCP服务器相关的问题，请在GitHub上开启issue。
+对于与此MCP服务器相关的问题，请在[GitHub](https://github.com/QianJue-CN/TRUERandomMCP/issues)上开启issue。
 对于api.random.org API问题，请参考其[文档](https://api.random.org/json-rpc/4)。

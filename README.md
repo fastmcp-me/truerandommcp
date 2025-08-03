@@ -17,9 +17,19 @@ This MCP server provides the following tools:
 
 ## Installation
 
+### Option 1: Install from npm (Recommended)
+```bash
+# Global installation
+npm install -g random-org-mcp-server
+
+# Or use without installation
+npx random-org-mcp-server
+```
+
+### Option 2: Build from source
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/QianJue-CN/TRUERandomMCP.git
 cd TRUERandomMCP
 ```
 
@@ -60,6 +70,17 @@ RANDOM_ORG_API_KEY=your_api_key_here
 
 ### Running the Server
 
+#### If installed globally:
+```bash
+random-org-mcp
+```
+
+#### Using npx (no installation required):
+```bash
+npx random-org-mcp-server
+```
+
+#### From source:
 ```bash
 npm start
 ```
@@ -185,5 +206,5 @@ MIT License - see LICENSE file for details.
 
 ## Support
 
-For issues related to this MCP server, please open an issue on GitHub.
+For issues related to this MCP server, please open an issue on [GitHub](https://github.com/QianJue-CN/TRUERandomMCP/issues).
 For api.random.org API issues, please refer to their [documentation](https://api.random.org/json-rpc/4).
