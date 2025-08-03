@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "random-org": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "cwd": ".",
+      "env": {
+        "RANDOM_ORG_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
