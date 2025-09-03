@@ -1,3 +1,8 @@
+[![Add to Cursor](https://fastmcp.me/badges/cursor_dark.svg)](https://fastmcp.me/MCP/Details/806/randomorg)
+[![Add to VS Code](https://fastmcp.me/badges/vscode_dark.svg)](https://fastmcp.me/MCP/Details/806/randomorg)
+[![Add to Claude](https://fastmcp.me/badges/claude_dark.svg)](https://fastmcp.me/MCP/Details/806/randomorg)
+[![Add to ChatGPT](https://fastmcp.me/badges/chatgpt_dark.svg)](https://fastmcp.me/MCP/Details/806/randomorg)
+
 # Random.org MCP Server
 
 A Model Context Protocol (MCP) server that provides access to the api.random.org service for generating true random numbers, strings, UUIDs, and more.
